@@ -79,7 +79,7 @@
       </div>
     
       <div class="card text-center" style="margin-top: 10px; margin-bottom: 10px; padding: 0%;">
-        <div class="card-header bg-transparent">Trend Last 7 Days (Cumulative)</div>
+        <div class="card-header bg-transparent">Daily Trend (Last 10 Days)</div>
         <div class="card-body">
           <canvas id="weekChart"></canvas>
         </div>
@@ -121,7 +121,7 @@
         <div class="card-header bg-transparent">Testing Snapshot</div>
         <div class="card-body">
           <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-4">
               <div class="card">
                 <div class="card-header bg-transparent">Total Tested</div>
                 <div class="card-body">
@@ -129,15 +129,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-3">
-              <div class="card">
-                <div class="card-header bg-transparent">Tested (Last 24Hours)</div>
-                <div class="card-body">
-                  <h4 class="card-text"><span id="lastTested"></span></h4>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3">
+            <div class="col-sm-4">
               <div class="card">
                 <div class="card-header bg-transparent">Tests per Million</div>
                 <div class="card-body">
@@ -145,7 +137,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-4">
               <div class="card">
                 <div class="card-header bg-transparent">Positive Percentage</div>
                 <div class="card-body">
@@ -167,8 +159,7 @@
                   <th>Confirmed</th>
                   <th>Active</th>
                   <th>Recovered</th>
-                  <th>COVID19 Death</th>
-                  <th>Comorbidity Death</th>
+                  <th>Deceased</th>
               </tr>
           
               <tbody id="myTable">

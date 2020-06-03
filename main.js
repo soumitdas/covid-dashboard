@@ -1,8 +1,8 @@
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover();   
   });
-  const stateUrl = 'https://jsonbox.io/b0512bc1_4d51_4ad4_a493_99231b708385';
-  fetch(stateUrl)
+  const url = 'https://jsonbox.io/b0512bc1_4d51_4ad4_a493_99231b708385';
+  fetch(url)
       .then(response => response.json())
       .then(function(data) {
           appendStatus(data[3]);
@@ -10,6 +10,7 @@ $(document).ready(function(){
           buildTable(data[1].districtData);
           document.getElementById("lastUpdate").textContent = data[0].bulletin[0].date + ", " + data[0].bulletin[0].time;
           document.getElementById('sourceLink').innerHTML = data[0].bulletin[0].link;
+          lastStatus(data[2].weekData);
       })
       .catch(function(error) {
           console.log(error);
@@ -19,6 +20,10 @@ $(document).ready(function(){
       document.getElementById("statusActive").textContent = data.active;
       document.getElementById("statusRecovered").textContent = data.recovered;
       document.getElementById("statusDeceased").textContent = data.deaths;
+      document.getElementById("totalTested").textContent = data.totalTest;
+      document.getElementById("lastTested").textContent = data.lastTest;
+      document.getElementById("testPerm").textContent = data.testPerm;
+      document.getElementById("testPercent").textContent = data.testPer;
   }
   function drawChart(data) {
       var ctx = document.getElementById('weekChart').getContext('2d');
@@ -86,6 +91,16 @@ $(document).ready(function(){
               <td>${data[i].comorbidity}</td>
             </tr>`
       table.innerHTML += row
-
     }
+  }
+  function lastStatus(data) {
+    var con = parseInt(data[0].confirmed) - parseInt(data[1].confirmed);
+    var rec = parseInt(data[0].recovered) - parseInt(data[1].recovered);
+    var die = parseInt(data[0].died) - parseInt(data[1].died);
+    var lastcon = con.toString();
+    var lastrec = rec.toString();
+    var lastdie = die.toString(); 
+    document.getElementById("lastConfirmed").textContent = lastcon;
+    document.getElementById("lastRecovered").textContent = lastrec;
+    document.getElementById("lastDeceased").textContent = lastdie;
   }
