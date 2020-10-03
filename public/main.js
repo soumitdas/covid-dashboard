@@ -153,8 +153,8 @@ $(document).ready(function(){
     document.getElementById("lastUpdate").textContent = data.lastupdatedtime;
   }
   function updateTesting(data) {
-    document.getElementById("totalTested").textContent = data.totaltested;
-    document.getElementById("testPerm").textContent = data.testspermillion;
-    document.getElementById("testPercent").textContent = data.testpositivityrate;
-    document.getElementById('sourceLink').innerHTML = '<a href=\"' + data.source1 + '\">Source</a>';
+    document.getElementById("totalTested").textContent = data.totaltested || 'NA';
+    document.getElementById("testPerm").textContent = data.testspermillion || 'NA';
+    document.getElementById("testPercent").textContent = data.testpositivityrate || 'NA';
+    document.getElementById('sourceLink').innerHTML = '<a href=\"' + data.source1 + '\" target="_blank">Source</a>';
   }
