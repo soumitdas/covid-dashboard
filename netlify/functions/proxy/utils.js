@@ -31,7 +31,7 @@ function filterTestDataOnlyForWb(response) {
   const filteredData = states_tested_data.filter(
     (data) => data.state === "West Bengal"
   );
-  return JSON.stringify({ states_tested_data = filteredData });
+  return JSON.stringify({ states_tested_data: filteredData });
 }
 
 module.exports = { getRequest, filterTestDataOnlyForWb };
