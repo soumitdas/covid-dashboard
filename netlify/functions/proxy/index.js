@@ -15,7 +15,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 200,
       headers: {
-        "cache-control": { value: `public, max-age=${CACHE_RESP_TIME_IN_SECONDS};` },
+        "cache-control": `public, max-age=${CACHE_RESP_TIME_IN_SECONDS};`,
       },
       body: response,
     };
