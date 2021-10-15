@@ -34,4 +34,4 @@ function filterTestDataOnlyForWb(response) {
   return JSON.stringify({ states_tested_data = filteredData });
 }
 
-module.exports = { getRequest };
+module.exports = { getRequest, filterTestDataOnlyForWb };

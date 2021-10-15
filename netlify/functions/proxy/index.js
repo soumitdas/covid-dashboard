@@ -1,4 +1,4 @@
-const { getRequest } = require("./utils");
+const { getRequest, filterTestDataOnlyForWb } = require("./utils");
 
 const BASE_URL = "https://data.covid19india.org/";
 
