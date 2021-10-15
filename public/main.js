@@ -1,7 +1,9 @@
+const BASE_URL = "/.netlify/functions/proxy";
+
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover();   
   });
-  fetch('https://api.covid19india.org/v2/state_district_wise.json')
+  fetch(`${BASE_URL}?path=${encodeURIComponent("v2/state_district_wise.json")}`)
       .then(response => response.json())
       .then(function(data) {
           buildTable(data[getState(data)].districtData);
@@ -9,7 +11,7 @@ $(document).ready(function(){
       .catch(function(error) {
           console.log(error);
       });
-  fetch('https://api.covid19india.org/data.json')
+  fetch(`${BASE_URL}?path=${encodeURIComponent("data.json")}`)
       .then(response => response.json())
       .then(function(data) {
           updateStatus(data.statewise[getState(data.statewise)]);
@@ -17,7 +19,7 @@ $(document).ready(function(){
       .catch(function(error) {
           console.log(error);
       });
-  fetch('https://api.covid19india.org/state_test_data.json')
+  fetch(`${BASE_URL}?path=${encodeURIComponent("state_test_data.json")}`)
       .then(response => response.json())
       .then(function(data) {
           updateTesting(data.states_tested_data[getStateTest(data.states_tested_data)]);
@@ -25,7 +27,7 @@ $(document).ready(function(){
       .catch(function(error) {
           console.log(error);
       });
-  fetch('https://api.covid19india.org/states_daily.json')
+  fetch(`${BASE_URL}?path=${encodeURIComponent("states_daily.json")}`)
       .then(response => response.json())
       .then(function(data) {
           lastStatus(data.states_daily);
