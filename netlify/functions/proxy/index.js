@@ -1,6 +1,7 @@
 const { getRequest, filterTestDataOnlyForWb } = require("./utils");
 
 const BASE_URL = "https://data.covid19india.org/";
+const CACHE_RESP_TIME_IN_SECONDS = 60 * 60;
 
 exports.handler = async (event) => {
   try {
@@ -8,10 +9,16 @@ exports.handler = async (event) => {
     const url = BASE_URL + decodeURIComponent(path);
     let response = await getRequest(url);
     if (path === "state_test_data.json") {
-        // Reduce the huge payload size
-        response = filterTestDataOnlyForWb(response);
+      // Reduce the huge payload size
+      response = filterTestDataOnlyForWb(response);
     }
-    return { statusCode: 200, body: response };
+    return {
+      statusCode: 200,
+      headers: {
+        "cache-control": { value: `public, max-age=${CACHE_RESP_TIME_IN_SECONDS};` },
+      },
+      body: response,
+    };
   } catch (error) {
     console.log(error);
     return {
