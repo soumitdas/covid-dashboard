@@ -14,9 +14,10 @@ exports.handler = async (event) => {
     }
     return {
       statusCode: 200,
-      headers: {
-        "cache-control": `public, max-age=${CACHE_RESP_TIME_IN_SECONDS};`,
-      },
+      // INFO: Removed now, for some reason UI doesn't show the data
+      // headers: {
+      //   "cache-control": `public, max-age=${CACHE_RESP_TIME_IN_SECONDS};`,
+      // },
       body: response,
     };
   } catch (error) {
